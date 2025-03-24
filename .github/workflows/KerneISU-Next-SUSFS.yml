@@ -32,7 +32,6 @@ on:
         required: true
         type: choice
         options:
-          - without ksu
           - tag
           - main
         default: main
