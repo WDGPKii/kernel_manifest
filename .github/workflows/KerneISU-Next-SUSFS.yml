@@ -104,8 +104,8 @@ jobs:
           cd ../common
           patch -p1 < 50_add_susfs_in_gki-${{ github.event.inputs.ANDROID_VERSION }}-${{ github.event.inputs.KERNEL_VERSION }}.patch || true
           # Replace next_hooks.patch with syscall_hooks.patch
-          cp ../../kernel_patches/next/syscall_hooks.patch ./
-          patch -p1 -F 3 < syscall_hooks.patch
+          #cp ../../kernel_patches/next/syscall_hooks.patch ./
+          #patch -p1 -F 3 < syscall_hooks.patch
           cp ../../kernel_patches/69_hide_stuff.patch ./
           patch -p1 -F 3 < 69_hide_stuff.patch
           patch -p1 < ../../.repo/manifests/patches/001-lz4.patch
