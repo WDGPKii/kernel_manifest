@@ -158,11 +158,23 @@ jobs:
           cd kernel_workspace/kernel_platform
           ./build_with_bazel.py -t ${{ github.event.inputs.CPUD }} gki -o out || true
 
+                  
+      - name: Patch SukiSU Ultra KPM
+        run: |
+          cd kernel_workspace/kernel_platform
+          git clone https://github.com/ShirkNeko/SukiSU_KernelPatch_patch --depth 1
+          cd SukiSU_KernelPatch_patch
+          cp kernel_workspace/kernel_platform/out/arch/arm64/boot/Image .
+          cp kernel_workspace/kernel_platform/out/arch/arm64/boot/dts/qcom/*.dtb .
+          chmod +x patch_linux
+          ./patch_linux
+          mv -f oImage Image
+
       - name: Make AnyKernel3
         run: |
           git clone https://github.com/Kernel-SU/AnyKernel3 --depth=1
           rm -rf ./AnyKernel3/.git
-          cp kernel_workspace/kernel_platform/out/dist/Image ./AnyKernel3/
+          cp kernel_workspace/kernel_platform/SukiSU_KernelPatch_patch/Image ./AnyKernel3/
 
       - name: Upload AnyKernel3
         uses: actions/upload-artifact@v4
