@@ -164,7 +164,7 @@ jobs:
           cd kernel_workspace/kernel_platform
           git clone https://github.com/ShirkNeko/SukiSU_KernelPatch_patch --depth 1
           cd SukiSU_KernelPatch_patch
-          cp kernel_workspace/kernel_platform/out/arch/arm64/boot/Image .
+          cp kernel_workspace/kernel_platform/out/dist/Image .
           cp kernel_workspace/kernel_platform/out/arch/arm64/boot/dts/qcom/*.dtb .
           chmod +x patch_linux
           ./patch_linux
