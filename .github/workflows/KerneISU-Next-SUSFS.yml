@@ -164,7 +164,7 @@ jobs:
           cd kernel_workspace/kernel_platform
           mkdir SukiSU_KernelPatch_patch
           cd SukiSU_KernelPatch_patch
-          cp ./../.repo/manifests/patches/patch_linux ./
+          cp ../../.repo/manifests/patches/patch_linux ./
           cp kernel_workspace/kernel_platform/out/dist/Image ./
           chmod +x patch_linux
           ./patch_linux
